@@ -28,6 +28,11 @@ extern "C" {
      * @param NUM_AGENTS Number of agents involved
      */
     void init_vertices(int NUM_AGENTS);
+    
+    /**
+     * Function to close the data structure and to clean the memory
+     */
+    void close_vertices();
 
 #ifdef	__cplusplus
 }

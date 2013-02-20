@@ -9,40 +9,21 @@
           </df>
           <df name="CompilerIdCXX">
             <in>CMakeCXXCompilerId.cpp</in>
-            <in>a.out</in>
           </df>
-          <in>CMakeSystem.cmake</in>
         </df>
         <df name="CMakeTmp">
         </df>
         <df name="pebble.dir">
-          <in>C.includecache</in>
-          <in>DependInfo.cmake</in>
-          <in>build.make</in>
-          <in>cmake_clean.cmake</in>
-          <in>depend.internal</in>
-          <in>depend.make</in>
-          <in>flags.make</in>
-          <in>link.txt</in>
-          <in>progress.make</in>
         </df>
         <df name="Test.dir">
-          <in>C.includecache</in>
-          <in>DependInfo.cmake</in>
-          <in>build.make</in>
-          <in>cmake_clean.cmake</in>
-          <in>depend.internal</in>
-          <in>depend.make</in>
-          <in>flags.make</in>
-          <in>link.txt</in>
-          <in>progress.make</in>
         </df>
-        <in>CMakeOutput.log</in>
       </df>
       <in>external_facade.c</in>
       <in>external_facade.h</in>
       <in>globals.h</in>
       <in>main.c</in>
+      <in>pebbleRigidity.c</in>
+      <in>pebbleRigidity.h</in>
       <in>vertices.c</in>
       <in>vertices.h</in>
     </df>

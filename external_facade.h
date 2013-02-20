@@ -26,12 +26,6 @@ void initPebbleRigidity(int n, int **G);
  */
 int verifyRigidity();
 
-/**
- * Function to add an edge to the current adjacency matrix encoding the graph
- * @param i i-th row
- * @param j j-th column
- */
-void addEdgeToGraph(int i, int j);
 
 /**
  * Function to close the Pebble Rigidity Test Framework
