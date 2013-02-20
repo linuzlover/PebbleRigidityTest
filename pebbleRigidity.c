@@ -4,7 +4,25 @@
 
 void rearrangePebbles(Vertices *vertices, int i,int j)
 {
+    int index;
     
+    if(vertices->path[i]==-1)
+    {
+        if(vertices->pebbles[i]==2)
+            index=0;
+        else if(vertices->pebbles[i]==1)
+            index=0;
+        else
+            index=-1;
+        
+        if(index!=-1)
+        {
+                vertices->pebble_assign[i][index]=j;
+                vertices->pebbles[i]--;
+                
+        }
+        return;
+    }
 }
 
 int findPebble(Vertices *vertices, int i)
