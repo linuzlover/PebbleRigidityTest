@@ -15,7 +15,13 @@ extern "C" {
 #include <stdlib.h>
 #include "globals.h"    
 
+int isRigid;
+int num_ind;
+int **ind_set;
 
+void init_rigidity_check();
+
+void close_rigidity_check();
 
 #ifdef	__cplusplus
 }
