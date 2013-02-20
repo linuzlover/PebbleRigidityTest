@@ -36,3 +36,4 @@ void closePebbleRigidity()
     }
     free(graph);
 }
+

@@ -12,6 +12,7 @@
 extern "C" {
 #endif
 
+#include <stdlib.h>
 /**
  * This function is intended to init the Pebble Rigidity Test Framework
  * @param[in] n Number of Agents
