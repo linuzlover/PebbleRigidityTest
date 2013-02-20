@@ -16,14 +16,16 @@ extern "C" {
         //(2*N-3 X 2 structure containing the independent set)
         int **indSet;
         int num_ind;
+        int is_rigid;
     } Vertices;
 
-/**
- * Function to initialize the vertex structure
- * @param NUM_AGENTS Number of agents involved
- */
-void init_vertices(int NUM_AGENTS);
-    
+    Vertices vrtx_strt;
+    /**
+     * Function to initialize the vertex structure
+     * @param NUM_AGENTS Number of agents involved
+     */
+    void init_vertices(int NUM_AGENTS);
+
 #ifdef	__cplusplus
 }
 #endif
