@@ -1,4 +1,5 @@
 #include "pebbleRigidity.h"
+#include "globals.h"
 #include "vertices.h"
 
 void rearrangePebbles(Vertices *vertices, int i,int j)
@@ -8,12 +9,45 @@ void rearrangePebbles(Vertices *vertices, int i,int j)
 
 int findPebble(Vertices *vertices, int i)
 {
+    int found=0;
+    int x,y;
     
+    vertices->seen[i]=0;
+    vertices->path[i]=-1;
+    
+    if(vertices->pebbles[i]>0)
+    {
+        found=1;
+        return found;
+    }
+    else
+    {
+        x=vertices->pebble_assign[i][0];
+        if(x<1)
+            x=0;
+        if(!vertices->seen[x])
+        {
+            vertices->path[i]=x;
+            found=findPebble(vertices,x);
+            if(found)
+                return found;
+            
+        }
+        y=vertices->pebble_assign[i][1];
+        if(y<1)
+            y=0;
+        if(!vertices->seen[y])
+            vertices->path[i]=y;
+        found=findPebble(vertices,y);
+            if(found)
+                return found;
+    }
+    return found;
 }
 
 int enlargeCover(Vertices *vertices,int num_agents,int i,int j)
 {
-    
+    return 0;
 }
 
 void pebbleRigidity()

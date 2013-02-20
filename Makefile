@@ -175,6 +175,30 @@ main.c.s:
 	$(MAKE) -f CMakeFiles/Test.dir/build.make CMakeFiles/Test.dir/main.c.s
 .PHONY : main.c.s
 
+pebbleRigidity.o: pebbleRigidity.c.o
+.PHONY : pebbleRigidity.o
+
+# target to build an object file
+pebbleRigidity.c.o:
+	$(MAKE) -f CMakeFiles/pebble.dir/build.make CMakeFiles/pebble.dir/pebbleRigidity.c.o
+.PHONY : pebbleRigidity.c.o
+
+pebbleRigidity.i: pebbleRigidity.c.i
+.PHONY : pebbleRigidity.i
+
+# target to preprocess a source file
+pebbleRigidity.c.i:
+	$(MAKE) -f CMakeFiles/pebble.dir/build.make CMakeFiles/pebble.dir/pebbleRigidity.c.i
+.PHONY : pebbleRigidity.c.i
+
+pebbleRigidity.s: pebbleRigidity.c.s
+.PHONY : pebbleRigidity.s
+
+# target to generate assembly for a file
+pebbleRigidity.c.s:
+	$(MAKE) -f CMakeFiles/pebble.dir/build.make CMakeFiles/pebble.dir/pebbleRigidity.c.s
+.PHONY : pebbleRigidity.c.s
+
 vertices.o: vertices.c.o
 .PHONY : vertices.o
 
@@ -215,6 +239,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... pebbleRigidity.o"
+	@echo "... pebbleRigidity.i"
+	@echo "... pebbleRigidity.s"
 	@echo "... vertices.o"
 	@echo "... vertices.i"
 	@echo "... vertices.s"

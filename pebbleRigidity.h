@@ -13,7 +13,7 @@ extern "C" {
 #endif
     
 #include <stdlib.h>
-#include "globals.h"    
+
 
 int isRigid;
 int num_ind;

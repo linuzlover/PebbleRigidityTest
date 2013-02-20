@@ -75,6 +75,13 @@
           </preprocessorList>
         </cTool>
       </item>
+      <item path="pebbleRigidity.c" ex="false" tool="0" flavor2="0">
+        <cTool>
+          <preprocessorList>
+            <Elem>pebble_EXPORTS</Elem>
+          </preprocessorList>
+        </cTool>
+      </item>
       <item path="vertices.c" ex="false" tool="0" flavor2="0">
         <cTool>
           <preprocessorList>
