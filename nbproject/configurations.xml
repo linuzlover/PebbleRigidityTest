@@ -26,12 +26,6 @@
           <in>link.txt</in>
           <in>progress.make</in>
         </df>
-        <df name="Progress">
-          <in>1</in>
-          <in>2</in>
-          <in>3</in>
-          <in>count.txt</in>
-        </df>
         <df name="Test.dir">
           <in>C.includecache</in>
           <in>DependInfo.cmake</in>

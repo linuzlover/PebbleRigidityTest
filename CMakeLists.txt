@@ -1,7 +1,7 @@
 cmake_minimum_required (VERSION 2.6)
 project (PEBBLE_TEST)
 
-option(USE_CLANG "build application with clang" OFF) # OFF is the default
+option(USE_CLANG "build application with clang" ON) # OFF is the default
 SET(CMAKE_BUILD_TYPE debug)
 if(USE_CLANG)
 	SET (CMAKE_C_COMPILER             "/usr/bin/clang")

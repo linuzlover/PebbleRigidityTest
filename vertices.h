@@ -12,11 +12,14 @@
 extern "C" {
 #endif
 
+#include <stdlib.h>
+    
     typedef struct {
-        //(2*N-3 X 2 structure containing the independent set)
-        int **indSet;
-        int num_ind;
-        int is_rigid;
+        int *seen;
+        int *path;
+        int *pebbles;
+        //I decided to use only the endpoint of the edge because the starting point is obvious
+        int **pebble_assign;
     } Vertices;
 
     Vertices vrtx_strt;

@@ -11,28 +11,31 @@
 int NUM;
 
 void init_vertices(int NUM_AGENTS) {
-    vrtx_strt.is_rigid = 0;
-
-    vrtx_strt.num_ind = 0;
     int i;
-    vrtx_strt.indSet = calloc(2 * NUM_AGENTS - 3, sizeof (int*));
+    vrtx_strt.seen = calloc(NUM_AGENTS, sizeof (int));
+    vrtx_strt.path = calloc(NUM_AGENTS, sizeof (int));
+    vrtx_strt.pebbles = calloc(NUM_AGENTS, sizeof (int));
+    vrtx_strt.pebble_assign = calloc(NUM_AGENTS, sizeof (int*));
 
-    for (i = 0; i < 2 * NUM_AGENTS - 3; i++) {
-        vrtx_strt.indSet[i] = calloc(2, sizeof (int));
+    for (i = 0; i < NUM_AGENTS; i++) {
+        vrtx_strt.pebble_assign[i] = calloc(2, sizeof (int));
+        vrtx_strt.pebble_assign[i][0] = -1;
+        vrtx_strt.pebble_assign[i][1] = -1;
+        vrtx_strt.pebbles[i] = 2;
+        vrtx_strt.path[i] = -1;
+        vrtx_strt.seen[i] = -1;
     }
+
     NUM = NUM_AGENTS;
-
-    for (i = 0; i < 2 * NUM_AGENTS - 3; i++) {
-        vrtx_strt.indSet[i][0] = 0;
-        vrtx_strt.indSet[i][1] = 0;
-    }
 }
 
 void close_vertices() {
     int i;
-    for (i = 0; i < 2 * NUM - 3; i++) {
-        free(vrtx_strt.indSet[i]);
+    for (i = 0; i < NUM; i++) {
+        free(vrtx_strt.pebble_assign[i]);
     }
-    free(vrtx_strt.indSet);
-    vrtx_strt.num_ind = -1;
+    free(vrtx_strt.pebble_assign);
+    free(vrtx_strt.seen);
+    free(vrtx_strt.path);
+    free(vrtx_strt.pebbles);
 }
