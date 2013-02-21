@@ -15,6 +15,13 @@
         </df>
         <df name="pebble.dir">
         </df>
+        <df name="Progress">
+          <in>1</in>
+          <in>2</in>
+          <in>3</in>
+          <in>4</in>
+          <in>count.txt</in>
+        </df>
         <df name="Test.dir">
         </df>
       </df>

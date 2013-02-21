@@ -13,7 +13,7 @@ extern "C" {
 #endif
     
 #include <stdlib.h>
-
+#include "vertices.h"
 
 int isRigid;
 int num_ind;
@@ -22,6 +22,10 @@ int **ind_set;
 void init_rigidity_check();
 
 void close_rigidity_check();
+
+int pebbleRigidity();
+
+extern Vertices vrtx_strt;
 
 #ifdef	__cplusplus
 }

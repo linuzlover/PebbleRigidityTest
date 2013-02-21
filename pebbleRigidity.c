@@ -1,6 +1,6 @@
 #include "pebbleRigidity.h"
 #include "globals.h"
-#include "vertices.h"
+
 
 
 void rearrangePebbles(Vertices *vertices, int i, int j) {
@@ -106,7 +106,7 @@ int enlargeCover(Vertices *vertices, int num_agents, int i, int j) {
     return success;
 }
 
-void pebbleRigidity() {
+int pebbleRigidity() {
     int i, j, k;
     int success;
 
@@ -120,6 +120,21 @@ void pebbleRigidity() {
                 success = enlargeCover(&vrtx_strt, NUM, i, j);
                 if (!success)
                     break;
+            }
+            
+            if(success)
+            {
+                ind_set[num_ind][0]=i;
+                ind_set[num_ind][1]=j;
+                num_ind++;
+                
+                if(num_ind==2*NUM-4) //-4 because I am starting with zero
+                {
+                    isRigid=1;
+                    return isRigid;
+                }
+                
+                vrtx_strt.pebbles[i]=2;
             }
 
         }
