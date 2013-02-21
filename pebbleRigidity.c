@@ -75,7 +75,35 @@ int findPebble(Vertices *vertices, int i) {
 }
 
 int enlargeCover(Vertices *vertices, int num_agents, int i, int j) {
-    return 0;
+    int success=0;
+    int k;
+    int found;
+    
+    for(k=0;k<num_agents;k++)
+    {
+        vertices->seen[k]=0;
+        vertices->path[k]=-1;
+    }
+    
+    found=findPebble(vertices,i);
+    if(found)
+    {
+        rearrangePebbles(vertices,i,j);
+        success=1;
+        return success;
+    }
+    
+    if(!vertices->seen[j])
+    {
+        found=findPebble(vertices,j);
+        if(found)
+        {
+            rearrangePebbles(vertices,j,i);
+            success=1;
+            return success;
+        }
+    }
+    return success;
 }
 
 void pebbleRigidity() {
