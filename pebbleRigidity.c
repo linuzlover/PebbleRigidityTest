@@ -135,6 +135,34 @@ int pebbleRigidity() {
                 }
                 
                 vrtx_strt.pebbles[i]=2;
+                vrtx_strt.pebble_assign[i][0]=-1;
+                vrtx_strt.pebble_assign[i][1]=-1;
+                vrtx_strt.pebbles[j]=1;
+                vrtx_strt.pebble_assign[j][0]=i;
+            }
+            else
+            {
+                if(vrtx_strt.pebble_assign[i][0]==j)
+                {
+                    vrtx_strt.pebbles[i]++;
+                    vrtx_strt.pebble_assign[i][0]=-1;
+                }
+                if(vrtx_strt.pebble_assign[i][1]==j)
+                {
+                    vrtx_strt.pebbles[i]++;
+                    vrtx_strt.pebble_assign[i][1]=-1;
+                }
+                if(vrtx_strt.pebble_assign[j][0]==i)
+                {
+                    vrtx_strt.pebbles[j]++;
+                    vrtx_strt.pebble_assign[j][0]=-1;
+                }
+                if(vrtx_strt.pebble_assign[j][1]==i)
+                {
+                    vrtx_strt.pebbles[j]++;
+                    vrtx_strt.pebble_assign[j][1]=-1;
+                }
+                
             }
 
         }
