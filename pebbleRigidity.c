@@ -2,9 +2,6 @@
 #include "globals.h"
 #include "vertices.h"
 
-void fixPebbles(int i, int j) {
-
-}
 
 void rearrangePebbles(Vertices *vertices, int i, int j) {
     int index, k;
