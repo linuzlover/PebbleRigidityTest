@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "external_facade.h"
-
+#define FILE_IN "./INPUT.TXT"
 /*
  * 
  */
@@ -16,44 +16,24 @@ int main(int argc, char** argv) {
 
     int n=5;
     int **G;
-    int i;
+    int i,j;
     int result;
+    FILE* in=fopen(FILE_IN,"r");
+    fscanf(in,"%d\n",&n);
+        
     
     G=calloc(n,sizeof(int*));
     for(i=0;i<n;i++)
         G[i]=calloc(n,sizeof(int));
     
-    G[0][0]=0;
-    G[0][1]=1;
-    G[0][2]=1;
-    G[0][3]=1;
-    G[0][4]=0;
-    
-    G[1][0]=1;
-    G[1][1]=0;
-    G[1][2]=1;
-    G[1][3]=1;
-    G[1][4]=0;
-    
-    
-    G[2][0]=1;
-    G[2][1]=1;
-    G[2][2]=0;
-    G[2][3]=0;
-    G[2][4]=1;
-    
-    G[3][0]=1;
-    G[3][1]=1;
-    G[3][2]=0;
-    G[3][3]=0;
-    G[3][4]=0;
-    
-    G[4][0]=0;
-    G[4][1]=0;
-    G[4][2]=1;
-    G[4][3]=0;
-    G[4][4]=0;
-    
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<n-1;j++)
+        {
+                fscanf(in,"%d\t",&G[i][j]);
+        }
+        fscanf(in,"%d\n",&G[i][j]);
+    }
     
     initPebbleRigidity(n,G);
     
@@ -67,7 +47,7 @@ int main(int argc, char** argv) {
     
     closePebbleRigidity();
     
-    
+    fclose(in);
     
     
 }
