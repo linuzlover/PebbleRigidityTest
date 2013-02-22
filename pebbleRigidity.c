@@ -72,11 +72,12 @@ int findPebble(Vertices *vertices, int i) {
         y = vertices->pebble_assign[i][1];
         if (y < 0)
             y = -1;
-        if (!vertices->seen[y])
+        if (!vertices->seen[y]){
             vertices->path[i] = y;
         found = findPebble(vertices, y);
         if (found)
             return found;
+        }
     }
     return found;
 }
