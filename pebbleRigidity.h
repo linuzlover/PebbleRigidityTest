@@ -19,13 +19,15 @@ int isRigid;
 int num_ind;
 int **ind_set;
 
+extern Vertices vrtx_strt;
+
 void init_rigidity_check();
 
 void close_rigidity_check();
 
 int pebbleRigidity();
 
-extern Vertices vrtx_strt;
+
 
 #ifdef	__cplusplus
 }

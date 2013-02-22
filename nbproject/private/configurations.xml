@@ -1,5 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="84">
+<configurationDescriptor version="88">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <df root="." name="PebbleRigidityTest">
+      <df name="CMakeFiles">
+        <df name="2.8.10.2">
+          <df name="CompilerIdC">
+            <in>CMakeCCompilerId.c</in>
+          </df>
+          <df name="CompilerIdCXX">
+            <in>CMakeCXXCompilerId.cpp</in>
+          </df>
+        </df>
+        <df name="CMakeTmp">
+        </df>
+        <df name="pebble.dir">
+        </df>
+        <df name="Test.dir">
+        </df>
+      </df>
+      <in>external_facade.c</in>
+      <in>external_facade.h</in>
+      <in>globals.h</in>
+      <in>main.c</in>
+      <in>pebbleRigidity.c</in>
+      <in>pebbleRigidity.h</in>
+      <in>vertices.c</in>
+      <in>vertices.h</in>
+    </df>
+  </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="Default" type="0">

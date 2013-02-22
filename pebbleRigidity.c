@@ -1,8 +1,6 @@
 #include "pebbleRigidity.h"
 #include "globals.h"
 
-
-
 void rearrangePebbles(Vertices *vertices, int i, int j) {
     int index, k;
 
@@ -75,31 +73,27 @@ int findPebble(Vertices *vertices, int i) {
 }
 
 int enlargeCover(Vertices *vertices, int num_agents, int i, int j) {
-    int success=0;
+    int success = 0;
     int k;
     int found;
-    
-    for(k=0;k<num_agents;k++)
-    {
-        vertices->seen[k]=0;
-        vertices->path[k]=-1;
+
+    for (k = 0; k < num_agents; k++) {
+        vertices->seen[k] = 0;
+        vertices->path[k] = -1;
     }
-    
-    found=findPebble(vertices,i);
-    if(found)
-    {
-        rearrangePebbles(vertices,i,j);
-        success=1;
+
+    found = findPebble(vertices, i);
+    if (found) {
+        rearrangePebbles(vertices, i, j);
+        success = 1;
         return success;
     }
-    
-    if(!vertices->seen[j])
-    {
-        found=findPebble(vertices,j);
-        if(found)
-        {
-            rearrangePebbles(vertices,j,i);
-            success=1;
+
+    if (!vertices->seen[j]) {
+        found = findPebble(vertices, j);
+        if (found) {
+            rearrangePebbles(vertices, j, i);
+            success = 1;
             return success;
         }
     }
@@ -121,53 +115,46 @@ int pebbleRigidity() {
                 if (!success)
                     break;
             }
-            
-            if(success)
-            {
-                ind_set[num_ind][0]=i;
-                ind_set[num_ind][1]=j;
+
+            if (success) {
+                ind_set[num_ind][0] = i;
+                ind_set[num_ind][1] = j;
                 num_ind++;
-                
-                if(num_ind==2*NUM-4) //-4 because I am starting with zero
+
+                if (num_ind == 2 * NUM - 3) 
                 {
-                    isRigid=1;
+                    isRigid = 1;
                     return isRigid;
                 }
-                
-                vrtx_strt.pebbles[i]=2;
-                vrtx_strt.pebble_assign[i][0]=-1;
-                vrtx_strt.pebble_assign[i][1]=-1;
-                vrtx_strt.pebbles[j]=1;
-                vrtx_strt.pebble_assign[j][0]=i;
-            }
-            else
-            {
-                if(vrtx_strt.pebble_assign[i][0]==j)
-                {
+
+                vrtx_strt.pebbles[i] = 2;
+                vrtx_strt.pebble_assign[i][0] = -1;
+                vrtx_strt.pebble_assign[i][1] = -1;
+                vrtx_strt.pebbles[j] = 1;
+                vrtx_strt.pebble_assign[j][0] = i;
+            } else {
+                if (vrtx_strt.pebble_assign[i][0] == j) {
                     vrtx_strt.pebbles[i]++;
-                    vrtx_strt.pebble_assign[i][0]=-1;
+                    vrtx_strt.pebble_assign[i][0] = -1;
                 }
-                if(vrtx_strt.pebble_assign[i][1]==j)
-                {
+                if (vrtx_strt.pebble_assign[i][1] == j) {
                     vrtx_strt.pebbles[i]++;
-                    vrtx_strt.pebble_assign[i][1]=-1;
+                    vrtx_strt.pebble_assign[i][1] = -1;
                 }
-                if(vrtx_strt.pebble_assign[j][0]==i)
-                {
+                if (vrtx_strt.pebble_assign[j][0] == i) {
                     vrtx_strt.pebbles[j]++;
-                    vrtx_strt.pebble_assign[j][0]=-1;
+                    vrtx_strt.pebble_assign[j][0] = -1;
                 }
-                if(vrtx_strt.pebble_assign[j][1]==i)
-                {
+                if (vrtx_strt.pebble_assign[j][1] == i) {
                     vrtx_strt.pebbles[j]++;
-                    vrtx_strt.pebble_assign[j][1]=-1;
+                    vrtx_strt.pebble_assign[j][1] = -1;
                 }
-                
+
             }
 
         }
     }
-
+    return isRigid;
 }
 
 void init_rigidity_check() {

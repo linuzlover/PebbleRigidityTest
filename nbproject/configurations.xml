@@ -1,28 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="84">
+<configurationDescriptor version="88">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
-    <df name="PebbleRigidityTest" root=".">
+    <df root="." name="PebbleRigidityTest">
       <df name="CMakeFiles">
         <df name="2.8.10.2">
-          <df name="CompilerIdC">
-            <in>CMakeCCompilerId.c</in>
-          </df>
           <df name="CompilerIdCXX">
             <in>CMakeCXXCompilerId.cpp</in>
           </df>
-        </df>
-        <df name="CMakeTmp">
-        </df>
-        <df name="pebble.dir">
-        </df>
-        <df name="Progress">
-          <in>1</in>
-          <in>2</in>
-          <in>3</in>
-          <in>4</in>
-          <in>count.txt</in>
-        </df>
-        <df name="Test.dir">
         </df>
       </df>
       <in>external_facade.c</in>
@@ -60,14 +44,9 @@
           <buildCommandWorkingDir>.</buildCommandWorkingDir>
           <buildCommand>${MAKE} -f Makefile</buildCommand>
           <cleanCommand>${MAKE} -f Makefile clean</cleanCommand>
-          <executablePath></executablePath>
+          <executablePath>Test</executablePath>
         </makeTool>
       </makefileType>
-      <item path="CMakeFiles/2.8.10.2/CompilerIdC/CMakeCCompilerId.c"
-            ex="true"
-            tool="0"
-            flavor2="0">
-      </item>
       <item path="CMakeFiles/2.8.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp"
             ex="false"
             tool="1"
@@ -82,6 +61,12 @@
           </preprocessorList>
         </cTool>
       </item>
+      <item path="external_facade.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="globals.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="pebbleRigidity.c" ex="false" tool="0" flavor2="0">
         <cTool>
           <preprocessorList>
@@ -89,12 +74,16 @@
           </preprocessorList>
         </cTool>
       </item>
+      <item path="pebbleRigidity.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="vertices.c" ex="false" tool="0" flavor2="0">
         <cTool>
           <preprocessorList>
             <Elem>pebble_EXPORTS</Elem>
           </preprocessorList>
         </cTool>
+      </item>
+      <item path="vertices.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>
