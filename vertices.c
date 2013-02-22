@@ -10,6 +10,7 @@
 
 int NUM;
 
+// Initialize the pebble covering structure
 void init_vertices(int NUM_AGENTS) {
     int i;
     vrtx_strt.seen = calloc(NUM_AGENTS, sizeof (int));
