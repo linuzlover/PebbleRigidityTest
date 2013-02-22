@@ -1,18 +1,22 @@
 #include "pebbleRigidity.h"
 #include "globals.h"
+#include <stdio.h>
 
 void rearrangePebbles(Vertices *vertices, int i, int j) {
     int index, k;
 
     if (vertices->path[i] == -1) {
-        index = 2 - vertices->pebbles[i];
+        if (vertices->pebbles[i] == 2)
+            index = 0;
+        else
+            index = 1;
 
-        if (index >= 0 && index < 2) {
-            vertices->pebble_assign[i][index] = j;
-            vertices->pebbles[i]--;
-        }
+        vertices->pebbles[i]--;
+        vertices->pebble_assign[i][index] = j;
         return;
+
     } else {
+
         if (vertices->pebble_assign[i][0] == vertices->path[i])
             vertices->pebble_assign[i][0] = j;
         if (vertices->pebble_assign[i][1] == vertices->path[i])
@@ -21,13 +25,16 @@ void rearrangePebbles(Vertices *vertices, int i, int j) {
 
     while (vertices->path[i] != -1) {
         k = vertices->path[i];
-        if (vertices->path[k] == -1) {
-            index = 2 - vertices->pebbles[k];
 
-            if (index >= 0 && index < 2) {
-                vertices->pebble_assign[k][index] = i;
-                vertices->pebbles[k]--;
-            }
+
+        if (vertices->path[k] == -1) {
+            if (vertices->pebbles[k] == 2)
+                index = 0;
+            else
+                index = 1;
+
+            vertices->pebble_assign[k][index] = i;
+            vertices->pebbles[k]--;
 
         } else {
             if (vertices->pebble_assign[k][0] == vertices->path[k])
@@ -43,7 +50,7 @@ int findPebble(Vertices *vertices, int i) {
     int found = 0;
     int x, y;
 
-    vertices->seen[i] = 0;
+    vertices->seen[i] = 1;
     vertices->path[i] = -1;
 
     if (vertices->pebbles[i] > 0) {
@@ -51,18 +58,20 @@ int findPebble(Vertices *vertices, int i) {
         return found;
     } else {
         x = vertices->pebble_assign[i][0];
-        if (x < 1)
-            x = 0;
+        if (x < 0)
+            x = -1;
+
         if (!vertices->seen[x]) {
             vertices->path[i] = x;
+
             found = findPebble(vertices, x);
             if (found)
                 return found;
 
         }
         y = vertices->pebble_assign[i][1];
-        if (y < 1)
-            y = 0;
+        if (y < 0)
+            y = -1;
         if (!vertices->seen[y])
             vertices->path[i] = y;
         found = findPebble(vertices, y);
@@ -121,8 +130,7 @@ int pebbleRigidity() {
                 ind_set[num_ind][1] = j;
                 num_ind++;
 
-                if (num_ind == 2 * NUM - 3) 
-                {
+                if (num_ind == 2 * NUM - 3) {
                     isRigid = 1;
                     return isRigid;
                 }
