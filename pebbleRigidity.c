@@ -8,11 +8,7 @@ void rearrangePebbles(Vertices *vertices, int i, int j) {
     // Free pebble taken directly from vertex i, given to edge
 
     if (vertices->path[i] == -1) {
-        if (vertices->pebbles[i] == 2)
-            index = 0;
-        else
-            index = 1;
-
+        index=2-vertices->pebbles[i];
         vertices->pebbles[i]--;
         vertices->pebble_assign[i][index] = j;
         return;
@@ -34,11 +30,7 @@ void rearrangePebbles(Vertices *vertices, int i, int j) {
 
         // Cover edge (i,j) with free pebble from j
         if (vertices->path[k] == -1) {
-            if (vertices->pebbles[k] == 2)
-                index = 0;
-            else
-                index = 1;
-
+            index=2-vertices->pebbles[k];
             vertices->pebble_assign[k][index] = i;
             vertices->pebbles[k]--;
 
@@ -70,8 +62,9 @@ int findPebble(Vertices *vertices, int i) {
 
     else {
         x = vertices->pebble_assign[i][0];
-        if (x < 0)
+        if (x < 0){
             x = -1;
+        }
 
         if (!vertices->seen[x]) {
             vertices->path[i] = x;
@@ -84,8 +77,11 @@ int findPebble(Vertices *vertices, int i) {
      // Check neighbor along second edge i has assigned a pebble
 
         y = vertices->pebble_assign[i][1];
-        if (y < 0)
+        if (y < 0){
             y = -1;
+            printf("Error on index %d, second\n",i);
+            exit(0);
+        }
         if (!vertices->seen[y]){
             vertices->path[i] = y;
         found = findPebble(vertices, y);
@@ -136,7 +132,7 @@ int pebbleRigidity() {
     for (i = 0; i < NUM; i++) {
         for (j = i + 1; j < NUM; j++) {
       // Check for edge, skip if none
-            if (graph[i][j] == 0) {
+            if (!graph[i][j]) {
                 continue;
             }
         // Attempt to enlarge cover by quadrupling new edge, or equivalently
@@ -175,6 +171,7 @@ int pebbleRigidity() {
                 vrtx_strt.pebble_assign[i][1] = -1;
                 vrtx_strt.pebbles[j] = 1;
                 vrtx_strt.pebble_assign[j][0] = i;
+                
             } 
             /*
             % Since the covering failed we are no longer considering edge
@@ -185,23 +182,39 @@ int pebbleRigidity() {
             % be all 4.
             */
             else {
-                if (vrtx_strt.pebble_assign[i][0] == j) {
+                if(vrtx_strt.pebble_assign[i][0]==j)
                     vrtx_strt.pebbles[i]++;
-                    vrtx_strt.pebble_assign[i][0] = -1;
-                }
-                if (vrtx_strt.pebble_assign[i][1] == j) {
+                if(vrtx_strt.pebble_assign[i][1]==j)
                     vrtx_strt.pebbles[i]++;
-                    vrtx_strt.pebble_assign[i][1] = -1;
+                switch(vrtx_strt.pebbles[i])
+                {
+                    case 1:
+                        vrtx_strt.pebble_assign[i][1]=-1;
+                        break;
+                    case 2:
+                        vrtx_strt.pebble_assign[i][0]=-1;
+                        break;
+                    default:
+                        break;
+                               
                 }
-                if (vrtx_strt.pebble_assign[j][0] == i) {
+                
+                if(vrtx_strt.pebble_assign[j][0]==i)
                     vrtx_strt.pebbles[j]++;
-                    vrtx_strt.pebble_assign[j][0] = -1;
-                }
-                if (vrtx_strt.pebble_assign[j][1] == i) {
+                if(vrtx_strt.pebble_assign[j][1]==i)
                     vrtx_strt.pebbles[j]++;
-                    vrtx_strt.pebble_assign[j][1] = -1;
+                switch(vrtx_strt.pebbles[j])
+                {
+                    case 1:
+                        vrtx_strt.pebble_assign[j][1]=-1;
+                        break;
+                    case 2:
+                        vrtx_strt.pebble_assign[j][0]=-1;
+                        break;
+                    default:
+                        break;
+                               
                 }
-
             }
 
         }
