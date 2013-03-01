@@ -27,12 +27,17 @@ extern "C" {
     
 #include <stdlib.h>
 #include "vertices.h"
+#include "globals.h"
+#include <stdio.h>
 
+    
 int isRigid;
 int num_ind;
 int **ind_set;
 
 extern Vertices vrtx_strt;
+
+void reinit_rigidity_check();
 
 void init_rigidity_check();
 

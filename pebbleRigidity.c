@@ -1,6 +1,4 @@
 #include "pebbleRigidity.h"
-#include "globals.h"
-#include <stdio.h>
 
 void rearrangePebbles(Vertices *vertices, int i, int j) {
     int index, k;
@@ -127,17 +125,21 @@ int pebbleRigidity() {
     int i, j, k;
     int success;
 
+    
+    
     // Consider each edge for independence by attempting to enlarge the covering
     // when the edge is quadrupled.
     for (i = 0; i < NUM; i++) {
         for (j = i + 1; j < NUM; j++) {
       // Check for edge, skip if none
+            
+            
             if (!graph[i][j]) {
                 continue;
             }
         // Attempt to enlarge cover by quadrupling new edge, or equivalently
         // running the cover enlargement 4 times for the new edge
-        
+            
             for (k = 0; k < 4; k++) {
                 success = enlargeCover(&vrtx_strt, NUM, i, j);
                 if (!success)
@@ -222,6 +224,11 @@ int pebbleRigidity() {
     return isRigid;
 }
 
+void reinit_rigidity_check()
+{
+    isRigid = 0;
+    num_ind = 0;
+}
 void init_rigidity_check() {
     int i;
     isRigid = 0;

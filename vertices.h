@@ -13,6 +13,8 @@ extern "C" {
 #endif
 
 #include <stdlib.h>
+#include "globals.h"
+    
     
     typedef struct {
         int *seen;
@@ -27,7 +29,9 @@ extern "C" {
      * Function to initialize the vertex structure
      * @param NUM_AGENTS Number of agents involved
      */
-    void init_vertices(int NUM_AGENTS);
+    void init_vertices();
+    
+    void reinit_vertices();
     
     /**
      * Function to close the data structure and to clean the memory

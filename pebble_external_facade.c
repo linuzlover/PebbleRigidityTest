@@ -1,12 +1,34 @@
-#include "external_facade.h"
+#include "pebble_external_facade.h"
 #include "globals.h"
-#include "pebbleRigidity.h"
 
-void initPebbleRigidity(int n, int **Gnew) {
+
+int** getIndependentSet()
+{
+    return ind_set;
+}
+
+int getIndependentSetSize()
+{
+    return num_ind;
+}
+
+void assignAdjacencyMatrix(int **Gnew) {
+    int i, j;
+    
+    for (i = 0; i < NUM; i++) {
+        for (j = 0; j < NUM; j++) {
+            graph[i][j] = Gnew[i][j];
+        }
+    }
+    reinit_vertices();
+    reinit_rigidity_check();
+}
+
+void initPebbleRigidity(int n) {
     int i, j;
     //Assigning the number of agents
     NUM = n;
-
+    
     /*Init the graph structure*/
 
     graph = calloc(NUM, sizeof (int*));
@@ -23,13 +45,13 @@ void initPebbleRigidity(int n, int **Gnew) {
         }
     }
 
-    for (i = 0; i < NUM; i++) {
-        for (j = 0; j < NUM; j++) {
-            graph[i][j] = Gnew[i][j];
-        }
-    }
+    //for (i = 0; i < NUM; i++) {
+    //    for (j = 0; j < NUM; j++) {
+    //        graph[i][j] = Gnew[i][j];
+    //    }
+    //}
 
-    init_vertices(n);
+    init_vertices();
     init_rigidity_check();
 }
 

@@ -7,7 +7,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "external_facade.h"
+#include "pebble_external_facade.h"
 #define FILE_IN "./INPUT.TXT"
 /*
  * 
@@ -35,9 +35,14 @@ int main(int argc, char** argv) {
         fscanf(in,"%d\n",&G[i][j]);
     }
     
-    initPebbleRigidity(n,G);
+    
+    initPebbleRigidity(n);
+    
+    assignAdjacencyMatrix(G);
     
     result=verifyRigidity();
+    
+    
     
     printf("Result: %d\n",result);
     

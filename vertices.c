@@ -6,19 +6,31 @@
  */
 
 #include "vertices.h"
+#include <stdio.h>
 
-
-int NUM;
+void reinit_vertices()
+{
+    int i;
+    
+    for (i = 0; i < NUM; i++) {
+        vrtx_strt.pebble_assign[i][0] = -1;
+        vrtx_strt.pebble_assign[i][1] = -1;
+        vrtx_strt.pebbles[i] = 2;
+        vrtx_strt.path[i] = -1;
+        vrtx_strt.seen[i] = -1;
+    }
+    
+}
 
 // Initialize the pebble covering structure
-void init_vertices(int NUM_AGENTS) {
+void init_vertices() {
     int i;
-    vrtx_strt.seen = calloc(NUM_AGENTS, sizeof (int));
-    vrtx_strt.path = calloc(NUM_AGENTS, sizeof (int));
-    vrtx_strt.pebbles = calloc(NUM_AGENTS, sizeof (int));
-    vrtx_strt.pebble_assign = calloc(NUM_AGENTS, sizeof (int*));
+    vrtx_strt.seen = calloc(NUM, sizeof (int));
+    vrtx_strt.path = calloc(NUM, sizeof (int));
+    vrtx_strt.pebbles = calloc(NUM, sizeof (int));
+    vrtx_strt.pebble_assign = calloc(NUM, sizeof (int*));
 
-    for (i = 0; i < NUM_AGENTS; i++) {
+    for (i = 0; i < NUM; i++) {
         vrtx_strt.pebble_assign[i] = calloc(2, sizeof (int));
         vrtx_strt.pebble_assign[i][0] = -1;
         vrtx_strt.pebble_assign[i][1] = -1;
@@ -27,7 +39,6 @@ void init_vertices(int NUM_AGENTS) {
         vrtx_strt.seen[i] = -1;
     }
 
-    NUM = NUM_AGENTS;
 }
 
 void close_vertices() {
